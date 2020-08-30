@@ -12,11 +12,13 @@ var textQuestion = document.querySelector(".textCenter");
 var answer = document.querySelector(".answer");
 var remainTime = document.querySelector(".timer");
 var linkScore = document.querySelector(".a-score");
-
 var firstColor = "#39a6b2";
 var textCnt = "left";
 var secondColor = "#ffffff";
 var thirdColor = "#39a6b2";
+
+// Answer styling
+answer.style.fontSize = "50px";
 
 initialContent();
 
@@ -122,7 +124,7 @@ var checkAnswer = function (str, x) {
       if (!checkingTimer()) {
         timer -= 10;
       }
-      showAnswer = "Wrong!";
+      showAnswer = "Wrong!"; 
     }
 
     //eliminating the previous question
