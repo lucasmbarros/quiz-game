@@ -1,0 +1,97 @@
+:root {
+  --primary-color: #fff;
+  --tertiary-color: #39a6b2;
+}
+
+/* Header */
+
+header {
+  background-color: var(--tertiary-color);
+  border-radius: 20px;
+  text-decoration: none;
+  color: var(--primary-color); 
+}
+
+header div {
+  padding: 0 30px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;  
+}
+
+header div h5 {
+  flex: 1;
+}
+
+header div p span {
+  flex: 2;
+  justify-content: left;
+}
+
+
+header a,
+header p {
+  text-decoration: none;
+  color: var(--primary-color);
+  font-size: 30px;
+  }
+
+a {
+  text-decoration: none;
+}
+
+.textAction ol {
+  background: var(--tertiary-color);
+  color: #ffffff;
+  justify-content: left;
+  padding: 10px;
+}
+
+header h4.score {
+  padding-top: 8px;
+}
+
+#quiz-assessment {
+    font-weight: bold;
+    font-size: 50px;
+    margin: auto;        
+}
+
+/* Main */
+
+main {
+  margin: auto;
+  padding: 15px 30px;
+  justify-content: center;
+  width: 65%;
+}
+
+main div {
+  text-align: center;
+  margin: 10px auto 0px auto;
+  padding: 5px;
+}
+
+main div h1 {
+  text-align: center;
+  margin: 10px auto 0px auto;
+  padding: 5px;
+}
+
+.answer {
+  font-weight: bold;
+}
+
+/* Footer */
+
+footer {
+  background-color: var(--tertiary-color);
+  border-radius: 20px;
+  color: var(--primary-color);
+  text-align: center;
+}
+
+footer h2 a {
+  text-decoration: none;
+  color: var(--primary-color);
+}
