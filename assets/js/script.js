@@ -20,8 +20,6 @@ var thirdColor = "#39a6b2";
 
 initialContent();
 
-// Questions taken from test modules and the mock up examples. 8 questions in total
-
 var questions = [
   //Question #1
   {
@@ -94,7 +92,6 @@ function createButton(id, txt) {
 
 // creating a button for the first time in container Div class name textAction
 function initialContent() {
-  //creating the "Start Button" id value id = start, and content text
   createButton("start", "Start Quiz");
 
   //setting highOption as a flag
@@ -113,7 +110,6 @@ var checkingTimer = function () {
 
 // checking answer and calling for the next question
 var checkAnswer = function (str, x) {
-  // if index is less than question length then calling the showQuestion() for the next question
   if (x < questions.length) {
     var showAnswer = "";
 
@@ -124,19 +120,19 @@ var checkAnswer = function (str, x) {
       }
     } else {
       if (!checkingTimer()) {
-        timer -= 10; // subtract 10 seconds for the timer
+        timer -= 10;
       }
       showAnswer = "Wrong!";
     }
 
-    //eliminating the precedent question
+    //eliminating the previous question
     var elementNode = document.querySelector("#question-id");
     deleteChildNode(elementNode);
 
     index = showQuestion(index);
     answer.textContent = showAnswer;
   } else {
-    // call deletechilnode
+    // call deletechildnode
     var elementNode = document.querySelector("#question-id");
     deleteChildNode(elementNode);
     //deleteChildNode(answer);
@@ -163,7 +159,7 @@ var showQuestion = function (x) {
     //Styling the answer in each question
     listUnOrdered.style.color = secondColor;
     listUnOrdered.style.justifyContent = "space-between";
-    listUnOrdered.style.listStyle = "none";    
+    listUnOrdered.style.listStyle = "none";
     op1.style.background = firstColor;
     op1.style.justifyContent = textCnt;
     op1.style.borderRadius = "10px";
@@ -211,7 +207,7 @@ var showQuestion = function (x) {
     listUnOrdered.appendChild(op4);
     container.appendChild(listUnOrdered);
 
-    //eliminating the inicial button and other possible buttons
+    //eliminating the initial button and other possible buttons
     var button = document.querySelector("#start");
     deleteChildNode(button);
     deleteChildNode(document.querySelector("#go-back"));
@@ -220,7 +216,6 @@ var showQuestion = function (x) {
     // increasing and returning to store it in index variable
     x++;
   } else {
-    //this case is when you reach all question before the time is over
     showInitialsScore();
   }
   return x;
@@ -228,25 +223,24 @@ var showQuestion = function (x) {
 
 // function to delete element from de DOM to present a new and clean view
 var deleteChildNode = function (elementNode) {
-  //checking if selected element exits
   if (elementNode) {
     elementNode.parentNode.removeChild(elementNode);
   }
 };
 
-//showing a message
+//show message
 var displayErrorMessage = function (msg) {
   alert(msg);
 };
 
-// Function to retrieve values from key save in localStore
+// Function to retrieve values from key save in localStorage
 var gettingArrayLocalStore = function () {
   var user = [];
   user = JSON.parse(localStorage.getItem("userScore"));
   return user;
 };
 
-//clear localStore
+//clear localStorage
 var clearLocalStore = function () {
   localStorage.clear();
 };
@@ -270,10 +264,9 @@ var retrieveHighScore = function () {
     deleteChildNode(document.querySelector("#score-id"));
   }
 
-  //cheking if there is some key stored in localStore
+  //cheking if there is some key stored in localStorage
 
   if (saveHighScore != null) {
-
     console.log(saveHighScore.length);
     var listUnOrdered = document.createElement("ul");
     //setting style
@@ -281,9 +274,9 @@ var retrieveHighScore = function () {
     listUnOrdered.style, (justifyContent = "space-between");
     listUnOrdered.style.listStyle = "none";
     listUnOrdered.style.color = "#fff";
-    listUnOrdered.style.fontWeight = "bold";    
+    listUnOrdered.style.fontWeight = "bold";
 
-    // iterating through the array of values in localStore
+    // iterating through the array of values in localStorage
     for (var i = 0; i < saveHighScore.length; i++) {
       var li = document.createElement("li");
       li.innerHTML =
@@ -310,10 +303,10 @@ var retrieveHighScore = function () {
   var btn1 = document.querySelector("#go-back");
   var btn2 = document.querySelector("#clear");
   btn1.addEventListener("click", function () {
-    location.reload(); // reload index.html
+    location.reload();
   });
   btn2.addEventListener("click", function () {
-    clearLocalStore(); // clear from storage all key stored
+    clearLocalStore();
   });
 
   deleteChildNode(document.querySelector("#question-id"));
@@ -326,7 +319,6 @@ var saveScore = function () {
   //getting the input value
   var input = document.querySelector("#initials").value;
 
-  //validating if the user enter at list a value
   if (input === "") {
     displayErrorMessage("You must bring your Initials for your Score");
   } else {
@@ -347,7 +339,7 @@ var saveScore = function () {
 
     saveHighScore.push(saveHighScoreObj);
 
-    //Saving data in localStore
+    //Saving data in localStorage
     localStorage.setItem("userScore", JSON.stringify(saveHighScore));
     retrieveHighScore();
   }
@@ -355,7 +347,6 @@ var saveScore = function () {
 
 // function to show the form when the game is over
 var showInitialsScore = function () {
-  //message for the submit form
   textQuestion.textContent = "All done!";
   remainTime.textContent = "Time left :" + timer;
   answer.textContent = "";
@@ -363,7 +354,7 @@ var showInitialsScore = function () {
   var msg = document.createElement("p");
   msg.setAttribute("id", "score-id");
 
-  //note: Based on the total number of right Answer  10 ptos for 1 right answer
+  //note: Based on the total number of right Answer  10 points for 1 right answer
   msg.textContent =
     "Your final Score is: " + scores + " out of " + questions.length * 10;
 
@@ -379,7 +370,7 @@ var showInitialsScore = function () {
     "<button id='save' type='submit' onclick='saveScore()' style = 'background:" +
     firstColor +
     "; color:" +
-    secondColor +     
+    secondColor +
     "; border-radius:10px; outline:none;'>Submit</button></form>";
 
   // adding to containerbutton.style.outline = "none"
@@ -392,11 +383,9 @@ var clockTime = function () {
   if (checkingTimer()) {
     clearInterval(interval);
 
-    // call deletechilnode for cleaning purposes
     var elementNode = document.querySelector("#question-id");
     if (elementNode != null && answer != null) {
       deleteChildNode(elementNode);
-      //deleteChildNode(answer);
       answer.textContent = "";
 
       // call initial function ending quiz when the timer reaches 0 seconds
@@ -404,7 +393,6 @@ var clockTime = function () {
     }
   } else {
     if (index < questions.length) {
-      // calling questions array
       timer--;
       remainTime.textContent = "Time left :" + timer;
     }
@@ -414,9 +402,9 @@ var clockTime = function () {
 // listener to handler the functionality when the user clicked on button Start
 var startHandler = function () {
   container.textContent = "";
-  highOption = 1; //when the quiz starts
+  highOption = 1;
 
-  // Setting the interval... calling the function
+  // Setting the interval
   interval = setInterval(clockTime, 1000);
 
   // call function for questions
