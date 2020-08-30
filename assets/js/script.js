@@ -35,7 +35,7 @@ var questions = [
 
   //Question #2
   {
-    q: "The condition in an if/else statement is enclosed with ____",
+    q: "The condition in an if/else statement is enclosed with ____.",
     a: "Quotes",
     b: "Curly brackets",
     c: "Parentheses",
@@ -324,7 +324,7 @@ var saveScore = function () {
   if (input === "") {
     displayErrorMessage("You must enter your initials to register your score!");
   } else {
-    displayErrorMessage("Registered Your Score Successfully!");
+    displayErrorMessage("Registered your score successfully!");
 
     saveHighScore = gettingArrayLocalStore();
 
