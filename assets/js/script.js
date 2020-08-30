@@ -322,9 +322,9 @@ var saveScore = function () {
   var input = document.querySelector("#initials").value;
 
   if (input === "") {
-    displayErrorMessage("You must bring your Initials for your Score");
+    displayErrorMessage("You must enter your initials to register your score!");
   } else {
-    displayErrorMessage("Registered Your Score Successful");
+    displayErrorMessage("Registered Your Score Successfully!");
 
     saveHighScore = gettingArrayLocalStore();
 
